@@ -12,5 +12,5 @@ export default function CharacterCard(props) {
         $fragment.append($clone)
     }
 
-    document.getElementById("main").append($fragment)
+    document.getElementById("dinamic-content").append($fragment)
 }
