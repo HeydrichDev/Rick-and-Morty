@@ -14,7 +14,7 @@ export default function App() {
     
     const $main = document.getElementById("main")
     $main.append(SubHeader())
-    $root.append(Loader())
+    $main.append(Loader())
     $main.append(DinamicContent())
     $main.append(Pagination())
     Router()

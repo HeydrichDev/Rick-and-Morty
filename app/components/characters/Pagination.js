@@ -6,12 +6,12 @@ export default function Pagination() {
 
     //prevLink
     const $prevLink = document.createElement("div")
-    $prevLink.innerHTML = "←"
+    $prevLink.textContent = "←"
     $prevLink.classList.add("prev-link")
 
     //nextLink
     const $nextLink = document.createElement("div")
-    $nextLink.innerHTML = "→"
+    $nextLink.textContent = "→"
     $nextLink.classList.add("next-link")
 
     //endLink

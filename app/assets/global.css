@@ -107,8 +107,10 @@ body {
 
 /*  Loader  */
 .loader {
+    display: block;
     width: 4rem;
     height: 4rem;
+    margin: 1rem auto;
 }
 
 /*  Main Content    */

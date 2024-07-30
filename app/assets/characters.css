@@ -34,7 +34,7 @@
     border-radius: 1rem;
     border: medium solid var(--first-color);
     color: var(--text-color);
-    margin: auto .25rem;
+    margin: 1rem .25rem;
     cursor: pointer;
 
     &:hover {
