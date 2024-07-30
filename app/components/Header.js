@@ -5,5 +5,9 @@ export default function Header() {
         <h1>Rick and Morty</h1>
     `
 
+    //Local Menu Bar
+    const $menu = document.createElement("nav")
+    $menu.innerHTML = `<span class="home">Home</span> - <span class="">Search</span>`
+
     return $header
 }

@@ -5,9 +5,12 @@
     --first-color: #444;
     --first-color-dark: #222;
     --first-color-light: #666;
+    --second-color: blue;
+    --second-color-dark: darkblue;
     --text-color: #ddd;
-    --text-color-dark: #ccc; 
+    --text-color-dark: #ccc;
     --font: "Raleway", sans-serif;
+
 }
 
 /*      Reset       */
@@ -51,13 +54,55 @@ body {
     z-index: 999;
 }
 
-/*      Title       */
-.title {
-    text-align: left;
+/*      SubHeader       */
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
-.search {
-    text-align: right;
+.sub-header .search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.sub-header .search input {
+    display: inline;
+    padding: 1rem;
+    font-size: 125%;
+    border-radius: 1rem;
+    transform: translateX(1000px);
+    transition: all .3s ease-in-out;
+}
+
+.sub-header .search input.is-active {
+    transform: translate(0);
+}
+
+.sub-header .search-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+    width: 3.5rem;
+    height: 3.6rem;
+    background-color: var(--first-color);
+    color: var(--text-color);
+    padding: .5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: scale .3s ease-in-out;
+
+    &:hover {
+        scale: .95;
+    }
+}
+
+.sub-header .search-button svg {
+    fill: var(--text-color);
 }
 
 /*  Loader  */

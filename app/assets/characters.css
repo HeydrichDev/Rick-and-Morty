@@ -21,7 +21,23 @@
     border-radius: 1rem;
 }   
 
-/*      Search      */
-.search {
-    grid-column: -1;
+/*      Pagination     */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-container * {
+    background: var(--second-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    border: medium solid var(--first-color);
+    color: var(--text-color);
+    margin: auto .25rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--second-color-dark);
+    }
 }

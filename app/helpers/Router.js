@@ -10,7 +10,7 @@ export default async function Router() {
         await Ajax({
             url: Api.characters,
             success: (characters) => {
-                CharacterCard(characters.results)
+                CharacterCard(characters)
             }
         })
     }
