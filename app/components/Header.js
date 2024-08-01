@@ -3,11 +3,8 @@ export default function Header() {
     $header.classList.add("header")
     $header.innerHTML = `
         <h1>Rick and Morty</h1>
+        <nav class="sub-menu"><span class="home">Home</span> <span class="search">Search</span></nav>
     `
-
-    //Local Menu Bar
-    const $menu = document.createElement("nav")
-    $menu.innerHTML = `<span class="home">Home</span> - <span class="">Search</span>`
 
     return $header
 }
