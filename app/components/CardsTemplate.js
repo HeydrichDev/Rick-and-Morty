@@ -6,6 +6,4 @@ $charactersTemplate.innerHTML = `
     </article>
 `
 
-export default {
-    $charactersTemplate
-}
+export default { $charactersTemplate }

@@ -1,3 +1,4 @@
+@import "./home.css";
 @import "./characters.css";
 
 /*      Custom Properties       */
@@ -32,6 +33,17 @@ body {
 *::before,
 *::after {
     box-sizing: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+.root {
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 /*      Utilities Classes       */
@@ -69,6 +81,10 @@ body {
     &:hover {
         opacity: .7;
     }
+}
+
+.header nav a {
+    color: var(--text-color);
 }
 
 /*      SubHeader       */

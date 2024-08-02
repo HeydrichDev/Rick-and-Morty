@@ -1,8 +1,9 @@
-import Template from "../Template.js"
-import ErrorMessage from "../ErrorMessage.js"
+import CardsTemplate from "../CardsTemplate.js"
+import { charactersController } from "../../helpers/Controllers.js"
 
-export default async function CharacterCard(props) {
+const CharactersRender = () => {
     const $fragment = document.createDocumentFragment()
+    const $template = CardsTemplate.$charactersTemplate.content
     const $paginationContainer = document.querySelector(".pagination-container")
     const $startLink = document.querySelector(".start-link")
     const $prevLink = document.querySelector(".prev-link")
@@ -20,17 +21,17 @@ export default async function CharacterCard(props) {
         $loader.style.display = 'none'
         $paginationContainer.style.display = "none"
         $counter.style.display = "none"
-        document.getElementById("main").insertAdjacentElement("beforeend", ErrorMessage("Characters not found"))        
+        document.getElementById("main").insertAdjacentElement("beforeend", ErrorMessage("Characters not found"))
         return
     }
 
     const paintContent = () => {
         for (let character of props.results) {
-            Template.$charactersTemplate.content.querySelector("img").src = character.image
-            Template.$charactersTemplate.content.querySelector("img").alt = character.name
-            Template.$charactersTemplate.content.querySelector("h2").textContent = character.name
+            $template.querySelector("img").src = character.image
+            $template.querySelector("img").alt = character.name
+            $template.querySelector("h2").textContent = character.name
 
-            const $clone = document.importNode(Template.$charactersTemplate.content, true)
+            const $clone = document.importNode($template, true)
             $fragment.append($clone)
         }
 
@@ -38,7 +39,7 @@ export default async function CharacterCard(props) {
 
         pagination()
     }
-    
+
     const pagination = () => {
         $paginationContainer.style.display = "flex"
         if (props.info.next === null) {
@@ -68,3 +69,5 @@ export default async function CharacterCard(props) {
     $counter.textContent = localStorage.getItem("search") ? `Characters found: ${props.info.count}` : `Total Characters: ${props.info.count}`
     $loader.style.display = "none"
 }
+
+export { CharactersRender }

@@ -1,17 +1,28 @@
-import CharacterCard from "../components/characters/CharacterCard.js"
-import Ajax from "./Ajax.js"
-import Api from "./Api.js"
+const charactersController = () => {
+    //startLink
+    const $startLink = document.createElement("div")
+    $startLink.textContent = "start"
+    $startLink.classList.add("start-link")
 
-export default async function Router() {
+    //prevLink
+    const $prevLink = document.createElement("div")
+    $prevLink.textContent = "←"
+    $prevLink.classList.add("prev-link")
 
-    if (localStorage.getItem("characters")) {
-        localStorage.setItem("home", true)
-        await Ajax({
-            url: Api.characters,
-            success: (characters) => CharacterCard(characters)
-        })
-    }
+    //nextLink
+    const $nextLink = document.createElement("div")
+    $nextLink.textContent = "→"
+    $nextLink.classList.add("next-link")
 
+    //endLink
+    const $endLink = document.createElement("div")
+    $endLink.textContent = "End"
+    $endLink.classList.add("end-link")
+
+    const $paginationContainer = document.createElement("article")
+    $paginationContainer.classList.add("pagination-container")
+    $paginationContainer.append($startLink, $prevLink, $nextLink, $endLink)
+    
     const endLink = async (target) => {
         await Ajax({
             url: `${Api.characters}/?page=${target.dataset.link}`,
@@ -40,26 +51,6 @@ export default async function Router() {
         })
     }
 
-    const home = async () => {
-        if (localStorage.getItem("home")) return
-        localStorage.setItem("home", true)
-        localStorage.removeItem("search")
-        await Ajax({
-            url: Api.characters,
-            success: (characters) => CharacterCard(characters)
-        })
-    }
-
-    const search = async () => {
-        if (localStorage.getItem("search")) return
-        localStorage.setItem("search", true)
-        localStorage.removeItem("home")
-        await Ajax({
-            url: `${Api.searchCharacter}${localStorage.getItem("searchName")}`,
-            success: (characters) => CharacterCard(characters)
-        })
-    }
-
     const helpButton = async (target) => {
         target.parentElement.style.display = "none"
         document.querySelector(".search-form input").focus()
@@ -70,8 +61,6 @@ export default async function Router() {
         ".start-link": startLink,
         ".next-link": nextLink,
         ".prev-link": prevLink,
-        ".home": home,
-        ".search": search,
         ".help-button": helpButton
     }
 
@@ -84,3 +73,5 @@ export default async function Router() {
         }
     })
 }
+
+export {charactersController}

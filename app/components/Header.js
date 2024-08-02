@@ -3,7 +3,7 @@ export default function Header() {
     $header.classList.add("header")
     $header.innerHTML = `
         <h1>Rick and Morty</h1>
-        <nav class="sub-menu"><span class="home">Home</span> <span class="search">Search</span></nav>
+        <nav class="sub-menu"><a href="#/home">Home</a> <a href="#/characters" >Characters</a> <a href="#/locations">Locations</a> <a href="#/episodes">Episodes</a> </nav>
     `
 
     return $header

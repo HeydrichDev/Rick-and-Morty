@@ -1,6 +1,6 @@
 import Ajax from "../helpers/Ajax.js"
 import Api from "../helpers/Api.js"
-import CharacterCard from "./characters/CharacterCard.js"
+import { CharactersRender } from "./renders/Characters.js"
 
 export default function SubHeader() {
     //Title
@@ -43,7 +43,7 @@ export default function SubHeader() {
             localStorage.setItem("search", true)
             localStorage.removeItem("home")
             localStorage.setItem("searchName", $search.value)
-            Ajax({ url: `${Api.searchCharacter}${$search.value}`, success: (characters) => CharacterCard(characters) })
+            Ajax({ url: `${Api.searchCharacter}${$search.value}`, success: (characters) => CharactersRender(characters) })
         }
     })
 
