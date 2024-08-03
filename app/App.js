@@ -6,6 +6,7 @@ import Loader from "./components/Loader.js"
 import Main from "./components/Main.js"
 import Router from "./Routes/Router.js"
 import Counter from "./components/Counter.js"
+import { UpButton } from "./components/UpButton.js"
 
 export default function App() {
     const $root = document.getElementById("root")
@@ -18,6 +19,7 @@ export default function App() {
     $main.append(Loader())
     $main.append(DinamicContent())
     $main.append(Counter())
+    $root.append(UpButton())
 
     Router()
 }
