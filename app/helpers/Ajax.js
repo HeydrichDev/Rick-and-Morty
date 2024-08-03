@@ -1,4 +1,4 @@
-export default async function Ajax(props) {
+const Ajax = async (props) => {
     try {
         const { url, success } = props
 
@@ -9,3 +9,5 @@ export default async function Ajax(props) {
         console.log(err)
     }
 }
+
+export { Ajax }

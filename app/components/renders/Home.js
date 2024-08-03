@@ -4,10 +4,10 @@ const HomeRender = () => {
     const $homeContent = document.createElement("section")
     $homeContent.classList.add("home-content")
     $homeContent.innerHTML = `  
-        <h2>Welcome to the Rick and Morty API</h2>
-        
-        <article>
-            <img src="app/assets/HomeImage.webp" class="home-image">
+    <h2>Welcome to the Rick and Morty API</h2>
+    
+    <article>
+    <img src="app/assets/HomeImage.webp" class="home-image">
                 <div>
                     <h3>Explore various sections</h3>
                     <nav>
@@ -15,10 +15,15 @@ const HomeRender = () => {
                     </nav>
                 </div>
         </article>
-    `
+        `
 
     $main.style.display = "none"
-    $root.insertAdjacentElement("afterbegin", $homeContent)
+    if (document.querySelector(".home-content")) {
+        document.querySelector(".home-content").style.display = "block"
+        document.querySelector(".header").style.display = "none"
+        return
+    }
+    $root.append($homeContent)
     document.querySelector(".header").style.display = "none"
 }
 

@@ -9,7 +9,6 @@ import Counter from "./components/Counter.js"
 
 export default function App() {
     const $root = document.getElementById("root")
-    localStorage.setItem("characters", true)
     $root.append(Header())
     $root.append(Main())
     $root.insertAdjacentElement("beforeend",Footer())
