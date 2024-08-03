@@ -163,6 +163,43 @@ a {
     font-size: 1.5rem;
 }
 
+/*      Up Button       */
+.up-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+
+    width: 4rem;
+    height: 4rem;
+
+    display: grid;
+    place-content: center;
+
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: var(--second-color-dark);
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 100%;
+
+    &:hover {
+        opacity: .9;
+    }
+}
+
+/*      Reloader        */
+.reloader {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.reloader-active {
+    transform: rotate(360deg);
+}
+
+/*      Help Button     */
 .help-button {
     padding: 1rem;
     border-radius: 1rem;
