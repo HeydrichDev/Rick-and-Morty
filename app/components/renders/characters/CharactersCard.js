@@ -1,11 +1,12 @@
-import CardsTemplate from "../CardsTemplate.js"
-import { Ajax } from "../../helpers/Ajax.js"
-import Api from "../../helpers/Api.js"
-import { NotFoundMessage } from "../NotFound.js"
+import CardsTemplate from "../../CardsTemplate.js"
+import { Ajax } from "../../../helpers/Ajax.js"
+import Api from "../../../helpers/Api.js"
+import { NotFoundMessage } from "../../NotFound.js"
+import { CardsFeatures } from "../../CardsFeatures.js"
 
 const CharactersRender = async (props) => {
     if (!props) return await Ajax({ url: Api.characters, success: characters => CharactersRender(characters) })
-    
+
     const $fragment = document.createDocumentFragment()
     const $template = CardsTemplate.$charactersTemplate.content
     const $dinamicContent = document.getElementById("dinamic-content")
@@ -31,7 +32,7 @@ const CharactersRender = async (props) => {
             $template.querySelector("img").src = character.image
             $template.querySelector("img").alt = character.name
             $template.querySelector("h2").textContent = character.name
-            $template.querySelector(".character-card").setAttribute("data-characterID", character.id)
+            $template.querySelector(".character-card").setAttribute("data-characterid", character.id)
 
             const $clone = document.importNode($template, true)
             $fragment.append($clone)
@@ -68,7 +69,7 @@ const CharactersRender = async (props) => {
         $paginationContainer.append($startLink, $prevLink, $nextLink, $endLink)
 
         document.querySelector(".dinamic-content").append($paginationContainer)
-        
+
         renderPagination({
             $paginationContainer,
             $endLink,
@@ -99,8 +100,6 @@ const CharactersRender = async (props) => {
             items.$prevLink.classList.remove("pagination-disabled")
             localStorage.getItem("search") ? items.$startLink.classList.add("pagination-disabled") : items.$startLink.classList.remove("pagination-disbled")
         }
-
-        
     }
 
     // Render Content
@@ -112,47 +111,56 @@ const CharactersRender = async (props) => {
 
     // Pagination's Events
     const charactersController = () => {
+
+        const CardFeatures = async (target) => {
+            await Ajax({
+                url: `${Api.characters}/${target.parentElement.dataset.characterid}`,
+                success: features => CardsFeatures(features)
+            })
+        }
+
         const endLink = async (target) => {
             await Ajax({
                 url: `${Api.characters}/?page=${target.dataset.link}`,
                 success: (characters) => CharactersRender(characters)
             })
         }
-    
+
         const startLink = async (target) => {
             await Ajax({
                 url: `${Api.characters}/?page=${target.dataset.link}`,
                 success: (characters) => CharactersRender(characters)
             })
         }
-    
+
         const prevLink = async (target) => {
             await Ajax({
                 url: target.dataset.link,
                 success: (characters) => CharactersRender(characters)
             })
         }
-    
+
         const nextLink = async (target) => {
             await Ajax({
                 url: target.dataset.link,
                 success: (characters) => CharactersRender(characters)
             })
         }
-    
+
         const helpButton = async (target) => {
             target.parentElement.style.display = "none"
             document.querySelector(".search-form input").focus()
         }
-    
+
         const handlers = {
             ".end-link": endLink,
             ".start-link": startLink,
             ".next-link": nextLink,
             ".prev-link": prevLink,
-            ".help-button": helpButton
+            ".help-button": helpButton,
+            ".character-card *": CardFeatures
         }
-    
+
         document.addEventListener("click", async e => {
             for (const [selector, handler] of Object.entries(handlers)) {
                 if (e.target.matches(selector)) {

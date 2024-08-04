@@ -7,11 +7,13 @@ import Main from "./components/Main.js"
 import Router from "./Routes/Router.js"
 import Counter from "./components/Counter.js"
 import { UpButton } from "./components/UpButton.js"
+import { CardsFeatures } from "./components/CardsFeatures.js"
 
 export default function App() {
     const $root = document.getElementById("root")
     $root.append(Header())
     $root.append(Main())
+    $root.append(CardsFeatures())
     $root.insertAdjacentElement("beforeend",Footer())
 
     const $main = document.getElementById("main")

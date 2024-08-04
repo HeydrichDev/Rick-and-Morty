@@ -1,4 +1,4 @@
-import { CharactersRender } from "./renders/Characters.js"
+import { CharactersRender } from "./renders/characters/CharactersCard.js"
 import { Ajax } from "../helpers/Ajax.js"
 import Api from "../helpers/Api.js"
 
@@ -39,4 +39,4 @@ const Search = () => {
     return $form
 }
 
-export {Search}
+export { Search }

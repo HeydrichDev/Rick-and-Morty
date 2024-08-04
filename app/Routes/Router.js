@@ -1,5 +1,5 @@
-import { CharactersRender } from "../components/renders/Characters.js";
-import { HomeRender } from "../components/renders/Home.js";
+import { CharactersRender } from "../components/renders/characters/CharactersCard.js";
+import { HomeRender } from "../components/renders/home/Home.js";
 
 export default function Router() {
     const $root = document.getElementById("root")
@@ -7,7 +7,7 @@ export default function Router() {
 
     //Show Home
     if (!location.hash || location.hash === "#/home") return HomeRender()
-    
+
     // Clean Home Content
     if (location.hash !== "#/home") {
         $root.append($main)

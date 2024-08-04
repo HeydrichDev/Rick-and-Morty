@@ -1,6 +1,6 @@
 import { Ajax } from "../helpers/Ajax.js"
 import Api from "../helpers/Api.js"
-import { CharactersRender } from "./renders/Characters.js"
+import { CharactersRender } from "./renders/characters/CharactersCard.js"
 import { Search } from "./Search.js"
 
 export default function SubHeader() {
@@ -32,6 +32,6 @@ export default function SubHeader() {
         }
 
     })
-    
+
     return $subHeader
 }

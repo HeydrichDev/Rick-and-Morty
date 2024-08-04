@@ -6,6 +6,7 @@
     --first-color: #444;
     --first-color-dark: #222;
     --first-color-light: #666;
+    --first-color-alpha: rgba(0, 0, 0, 0.4);
     --second-color: blue;
     --second-color-dark: darkblue;
     --text-color: #ddd;
@@ -64,7 +65,7 @@ a {
     padding: 1rem;
     background-color: var(--first-color);
     color: var(--text-color);
-    z-index: 999;
+    z-index: 99;
 }
 
 .header nav * {
@@ -89,13 +90,16 @@ a {
     align-items: center;
     margin-bottom: 2rem;
 
-    @media (width <= 560px) {flex-direction: column;}
+    @media (width <=560px) {
+        flex-direction: column;
+    }
 }
 
 .sub-header .search-form {
     position: relative;
     display: flex;
     align-items: center;
+    z-index: -1;
 }
 
 .sub-header .search-form input {
@@ -199,6 +203,77 @@ a {
     transform: rotate(360deg);
 }
 
+/*      Features Card       */
+.features-container {
+    position: fixed;
+    top: 140px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    background-color: var(--first-color-alpha);
+}
+
+.features {
+    position: fixed;
+    top: 140px;
+    bottom: 0;
+    right: 0;
+    left: 50%;
+    transition: all .8s ease-in-out;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    padding: 3rem;
+    transform: translateX(100%);
+    background-color: var(--text-color);
+  
+    @media (width >= 1024px){
+        left: 65%;
+    }
+
+}
+
+.features .close {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--first-color-light);
+    color: var(--text-color);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--first-color);
+    }
+}
+
+.features img {
+    border-radius: 100%;
+    animation: ImageShadow 2s ease-in-out infinite;
+}
+
+.features .details {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    
+    @media (width >= 1024px){
+        font-size: 1.40rem;
+    }
+}
+
+.features-active {
+    transform: translate(0);
+}
+
 /*      Help Button     */
 .help-button {
     padding: 1rem;
@@ -220,4 +295,18 @@ a {
     padding: 2rem;
     text-align: center;
     order: 1;
+}
+
+@keyframes ImageShadow {
+    0% {
+        box-shadow: 0px 0px 10px 5px var(--first-color);
+    }
+
+    50% {
+        box-shadow: 0px 0px 30px 5px var(--first-color);
+    }
+
+    100% {
+        box-shadow: 0px 0px 10px 5px var(--first-color);
+    }
 }
